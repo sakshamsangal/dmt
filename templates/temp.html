@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+{{ tag_dict }}
+{% for x in tag_dict.values() %}
+    <ol>
+        <li>{{ x.tag }}</li>
+        <li>{{ x.count }}</li>
+        {% for y in x.att.values() %}
+            <ol>
+                {{ y.att_key }}
+                {% for z in y.data.values() %}
+                    <ol>
+                <li>{{ z.att_val }}</li>
+                <li>{{ z.img }}</li>
+                        </ol>
+                {% endfor %}
+
+            </ol>
+        {% endfor %}
+    </ol>
+{% endfor %}
+</body>
+</html>
