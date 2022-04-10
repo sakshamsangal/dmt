@@ -41,10 +41,6 @@ def move_to_bin():
         source = request.form['file']
         print(source)
         os.replace(f'static/img/{source}', f'static/bin/{os.path.basename(source)}')
-
-        json_object = json.loads(request.form['todo'])
-        with open('out.json', 'w', encoding='utf8') as f:
-            json.dump(json_object, f, indent=4)
         return {}
 
 
