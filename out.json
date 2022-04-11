@@ -80,24 +80,12 @@
                     "502",
                     "501"
                 ],
-                "check_img": [
-                    "deskbook/att/check/att_check_note_1649585190384.png",
-                    "deskbook/att/check/att_check_note_1649585190542.png"
-                ],
-                "pdf_img": [
-                    "deskbook/att/pdf/att_pdf_note_1649585188967.png",
-                    "deskbook/att/pdf/att_pdf_note_1649585189133.png"
-                ],
-                "xml_img": [
-                    "deskbook/att/xml/att_xml_note_1649585188013.png",
-                    "deskbook/att/xml/att_xml_note_1649585188171.png"
-                ]
+                "check_img": [],
+                "pdf_img": [],
+                "xml_img": []
             }
         },
-        "check_img": [
-            "deskbook/check/check_note_1649585186570.png",
-            "deskbook/check/check_note_1649585186752.png"
-        ],
+        "check_img": [],
         "citation": "",
         "count": 2,
         "file_name": "ppct65",
@@ -105,22 +93,13 @@
         "has_rule": true,
         "is_rendered": "",
         "map_tag": "",
-        "pdf_img": [
-            "deskbook/pdf/pdf_note_1649585184565.png",
-            "deskbook/pdf/pdf_note_1649585184862.png",
-            "deskbook/pdf/pdf_note_1649585185046.png",
-            "deskbook/pdf/pdf_note_1649585185257.png"
-        ],
+        "pdf_img": [],
         "prod": "",
         "rule": "",
         "tag": "note",
         "tag_desc": "",
         "temp": "",
-        "xml_img": [
-            "deskbook/xml/xml_note_1649585182571.png",
-            "deskbook/xml/xml_note_1649585182973.png",
-            "deskbook/xml/xml_note_1649585183673.png"
-        ]
+        "xml_img": []
     },
     "to": {
         "att": {},
