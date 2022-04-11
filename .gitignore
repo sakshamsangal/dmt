@@ -1,4 +1,5 @@
 static/img
+out.json
 .DS_Store
 .env
 .flaskenv
