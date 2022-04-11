@@ -6,7 +6,7 @@ $(document).ready(function () {
         "paging": false,
         "info": false
     });
-    var table2 = $('#tag_list_table').DataTable({
+    var tag_table = $('#tag_list_table').DataTable({
         scrollY: '72vh',
         select: true,
         "dom": '<"pull-left"f><"pull-right"l>tip',
@@ -23,7 +23,7 @@ $(document).ready(function () {
                         </a>
                         <a href="#" class="list-group-item list-group-item-action">A third link item</a>
                         <a file_name="${file_name}" dynamic_id="${dynamic_id}" type_img="${genre}" href="#"
-                           class="list-group-item list-group-item-action move-to-bin">Move to bin</a>
+                           class="list-group-item list-group-item-action list-group-item-danger move-to-bin">Move to bin</a>
                 </span>`
     }
 
@@ -43,7 +43,7 @@ $(document).ready(function () {
                     </a>
                     <a href="#" class="list-group-item list-group-item-action">A third link item</a>
 
-                    <a file_name="${file_name}" att_key="${att_key}" dynamic_id="${dynamic_id}" type_img="${genre}" href="#" class="list-group-item list-group-item-action move-to-bin-att">Move to bin</a>
+                    <a file_name="${file_name}" att_key="${att_key}" dynamic_id="${dynamic_id}" type_img="${genre}" href="#" class="list-group-item list-group-item-action list-group-item-danger move-to-bin-att">Move to bin</a>
             </span>
             `
     }
@@ -113,7 +113,7 @@ $(document).ready(function () {
         let accordionExample = $("#accordionExample")
         accordionExample.empty();
 
-        let data = table2.row(this).data()[0];
+        let data = tag_table.row(this).data()[0];
         selected_tag_name = data
 
         let tag_name = tag_dict_from_backend[data]['tag']
@@ -152,7 +152,14 @@ $(document).ready(function () {
                 todo: JSON.stringify(tag_dict_from_backend)
             },
             success: function (res) {
-                alert('saved');
+
+                $.confirm({
+                    title: 'Congratulations!',
+                    backgroundDismissAnimation: 'glow',
+                    backgroundDismiss: true,
+                    theme: 'dark',
+                    content: 'Data saved',
+                });
             }
         });
     });
@@ -168,9 +175,9 @@ $(document).ready(function () {
             },
             success: function (data) {
                 console.log(data)
-                table2.clear().draw();
+                tag_table.clear().draw();
                 $.each(data, function (index, value) {
-                    table2.row.add([
+                    tag_table.row.add([
                         value.tag
                     ]).draw();
                 });
@@ -179,7 +186,7 @@ $(document).ready(function () {
     });
     $('button.tag-image').on('click', function () {
         let type_img = $(this).attr('type_img');
-        let tag = table2.rows('.selected').data()[0][0]
+        let tag = tag_table.rows('.selected').data()[0][0]
         let dynamic_id = Date.now()
         let file_name = `deskbook/${type_img}/${type_img}_${tag}_${dynamic_id}.png`
 
@@ -191,7 +198,7 @@ $(document).ready(function () {
             },
             success: function (res) {
                 tag_dict_from_backend[tag][`${type_img}_img`].push(file_name)
-                $(`div#tag_img_${type_img}`).append(get_tag_img_span(type_img,dynamic_id , file_name))
+                $(`div#tag_img_${type_img}`).append(get_tag_img_span(type_img, dynamic_id, file_name))
             }
         });
     });
@@ -199,7 +206,7 @@ $(document).ready(function () {
     $(document).delegate('.attribute-image', 'click', function () {
         let type_img = $(this).attr('type_img');
         let att_key = $(this).attr('att_key');
-        let tag = table2.rows('.selected').data()[0][0]
+        let tag = tag_table.rows('.selected').data()[0][0]
         let dynamic_id = Date.now()
         let file_name = `deskbook/att/${type_img}/att_${type_img}_${tag}_${dynamic_id}.png`
         $.ajax({
@@ -244,8 +251,8 @@ $(document).ready(function () {
                 file: file_name
             }
         });
-
     });
+
     $(document).delegate('.move-to-bin-att', 'click', function () {
         let file_name = $(this).attr('file_name');
         let dynamic_id = $(this).attr('dynamic_id');
@@ -263,6 +270,7 @@ $(document).ready(function () {
         });
 
     });
+
 });
 
 
