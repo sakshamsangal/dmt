@@ -2,11 +2,11 @@ import json
 import os
 
 from PIL import ImageGrab
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, send_from_directory
 
 app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
-
+prod_name = ''
 x = ''
 
 
@@ -21,18 +21,42 @@ def home():
 
 @app.route("/save", methods=["POST"])
 def save():
+    prod = request.form['prod']
     json_object = json.loads(request.form['todo'])
-    with open('out.json', 'w', encoding='utf8') as f:
+    with open(get_file_path(prod), 'w', encoding='utf8') as f:
         json.dump(json_object, f, indent=4)
-    return render_template('index.html', tag_dict=json_object)
+    return {}
+
+
+def get_file_path(prod):
+    global prod_name
+    if prod == 'tm' or prod== 'tag_master':
+        prod_name = 'tag_master'
+        pa = f'static/json/{prod_name}.json'
+    else:
+        prod_name = prod
+        pa = f'static/json/prod/{prod_name}.json'
+    return pa
+
+
+@app.route('/<string:prod>', methods=["GET"])
+def hello_world(prod):
+    global x
+    with open(get_file_path(prod)) as f:
+        x = json.load(f)
+    print(x)
+    return render_template('index.html', tag_dict=x, json_file=prod_name)
+
+
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 
 @app.route('/')
-def hello_world():
-    global x
-    with open('out.json') as f:
-        x = json.load(f)
-    return render_template('index.html', tag_dict=x)
+def landing_page():
+    return render_template('temp.html')
 
 
 @app.route('/move-to-bin', methods=["POST"])
@@ -48,8 +72,9 @@ def move_to_bin():
 def show_has_rule():
     if request.method == "POST":
         flag = request.form['todo']
+        prod = request.form['prod']
         global x
-        with open('out.json') as f:
+        with open(get_file_path(prod)) as f:
             x = json.load(f)
         y = {}
         for k, x in x.items():

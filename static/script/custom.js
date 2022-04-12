@@ -76,7 +76,8 @@ $(document).ready(function () {
     }
 
     function append_accordion(y, accordionExample) {
-
+        console.log('sak')
+        console.log(y)
         for (let j = 0; j < y.length; j++) {
             let x = y[j]['att_key']
             accordionExample.append(`
@@ -108,7 +109,6 @@ $(document).ready(function () {
         tag_dict_from_backend[selected_tag_name]['has_query'] = !tag_dict_from_backend[selected_tag_name]['has_query']
     });
     $('#tag_list_table tbody').on('click', 'tr', function () {
-
         $(".tag_data").show();
         let accordionExample = $("#accordionExample")
         accordionExample.empty();
@@ -135,20 +135,23 @@ $(document).ready(function () {
         append_tag('pdf', tag_dict_from_backend[data]['pdf_img'])
         append_tag('check', tag_dict_from_backend[data]['check_img'])
         let list_of_att = Object.values(tag_dict_from_backend[data]['att'])
+        console.log(list_of_att)
+        append_accordion(list_of_att, accordionExample)
         for (let j = 0; j < list_of_att.length; j++) {
             let att_key = list_of_att[j]['att_key']
-            append_accordion(list_of_att, accordionExample)
             append_att('xml', list_of_att[j]['xml_img'], att_key)
             append_att('pdf', list_of_att[j]['pdf_img'], att_key)
             append_att('check', list_of_att[j]['check_img'], att_key)
         }
     });
     $('#save').on('click', function (e) {
+        // alert(prod)
         console.log(tag_dict_from_backend)
         $.ajax({
             type: 'POST',
             url: '/save',
             data: {
+                prod: prod,
                 todo: JSON.stringify(tag_dict_from_backend)
             },
             success: function (res) {
@@ -171,6 +174,7 @@ $(document).ready(function () {
             type: 'POST',
             url: '/show_has_rule',
             data: {
+                prod: prod,
                 todo: flag
             },
             success: function (data) {
@@ -188,8 +192,7 @@ $(document).ready(function () {
         let type_img = $(this).attr('type_img');
         let tag = tag_table.rows('.selected').data()[0][0]
         let dynamic_id = Date.now()
-        let file_name = `deskbook/${type_img}/${type_img}_${tag}_${dynamic_id}.png`
-
+        let file_name = `${prod}/${type_img}/${type_img}_${tag}_${dynamic_id}.png`
         $.ajax({
             type: 'POST',
             url: '/paste',
@@ -208,7 +211,7 @@ $(document).ready(function () {
         let att_key = $(this).attr('att_key');
         let tag = tag_table.rows('.selected').data()[0][0]
         let dynamic_id = Date.now()
-        let file_name = `deskbook/att/${type_img}/att_${type_img}_${tag}_${dynamic_id}.png`
+        let file_name = `${prod}/att/${type_img}/att_${type_img}_${tag}_${dynamic_id}.png`
         $.ajax({
             type: 'POST',
             url: '/paste',

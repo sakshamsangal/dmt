@@ -137,16 +137,12 @@
                     <th>Present tag</th>
                 </tr>
                 </thead>
-
                 <tbody>
-
                 {% for x in tag_dict.values() %}
                     <tr>
                         <td>{{ x.tag }}</td>
                     </tr>
                 {% endfor %}
-
-
                 </tbody>
             </table>
         </div>
@@ -269,9 +265,11 @@
 
 <script src="static/script/dark.js"></script>
 <script>
+    var prod = '{{ json_file }}'
     var selected_tag_name = ''
     $(".tag_data").hide();
     tag_dict_from_backend = {{ tag_dict | tojson | safe }}
+
 </script>
 <script src="static/script/custom.js"></script>
 </body>
