@@ -15,13 +15,13 @@ $(document).ready(function () {
         "info": false
     });
 
-    function get_tag_img_span(genre, dynamic_id, file_name) {
-        return `<span class="list-group" id="tag_img_${genre}_${dynamic_id}">
+    function get_tag_img_span(genre, dynamic_id, file_name, link) {
+        return `<span class="list-group" id="tag_img_${genre}_${dynamic_id}" style="margin-right: 3px">
                         <a target="_blank" href="static/img/${file_name}" class="list-group-item list-group-item-action"
                            aria-current="true">
                             <img src="static/img/${file_name}" alt="" srcSet="" width="100px" height="auto">
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action">A third link item</a>
+                        <a target="_blank" href="${link}" class="list-group-item list-group-item-action">External link</a>
                         <a file_name="${file_name}" dynamic_id="${dynamic_id}" type_img="${genre}" href="#"
                            class="list-group-item list-group-item-action list-group-item-danger move-to-bin">Move to bin</a>
                 </span>`
@@ -30,30 +30,37 @@ $(document).ready(function () {
     function append_tag(genre, y) {
         let tag_img = $(`#tag_img_${genre}`)
         tag_img.empty()
-        for (let j = 0; j < y.length; j++) {
-            let dynamic_id = Date.now() + '_' + Math.floor(Math.random() * 1001)
-            tag_img.append(get_tag_img_span(genre, dynamic_id, y[j]))
+
+        for (let key in y) {
+            if (y.hasOwnProperty(key)) {
+                let dynamic_id = Date.now() + '_' + Math.floor(Math.random() * 1001)
+                tag_img.append(get_tag_img_span(genre, dynamic_id, key, y[key]))
+            }
         }
+
     }
 
-    function get_att_img_span(genre, dynamic_id, file_name, att_key) {
-        return `<span class="list-group"  id="tag_att_img_${genre}_${dynamic_id}">
+    function get_att_img_span(genre, dynamic_id, file_name, att_key, link) {
+        return `<span class="list-group"  id="tag_att_img_${genre}_${dynamic_id}" >
                     <a target="_blank" href="static/img/${file_name}" class="list-group-item list-group-item-action" aria-current="true">
                         <img src="static/img/${file_name}" alt="" srcset="" width="100px" height="auto">
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action">A third link item</a>
+                    <a target="_blank" href="${link}" class="list-group-item list-group-item-action">External link</a>
 
                     <a file_name="${file_name}" att_key="${att_key}" dynamic_id="${dynamic_id}" type_img="${genre}" href="#" class="list-group-item list-group-item-action list-group-item-danger move-to-bin-att">Move to bin</a>
             </span>
             `
     }
 
-    function append_att(genre, img_list, att_key) {
+    function append_att(genre, y, att_key) {
         let tag_att_img = $(`#tag_att_img_${genre}_${att_key}`)
         tag_att_img.empty()
-        for (let j = 0; j < img_list.length; j++) {
-            let dynamic_id = Date.now() + '_' + Math.floor(Math.random() * 1001)
-            tag_att_img.append(get_att_img_span(genre, dynamic_id, img_list[j], att_key))
+        console.log('58', y)
+        for (let key in y) {
+            if (y.hasOwnProperty(key)) {
+                let dynamic_id = Date.now() + '_' + Math.floor(Math.random() * 1001)
+                tag_att_img.append(get_att_img_span(genre, dynamic_id, key, att_key, y[key]))
+            }
         }
     }
 
@@ -76,8 +83,6 @@ $(document).ready(function () {
     }
 
     function append_accordion(y, accordionExample) {
-        console.log('sak')
-        console.log(y)
 
         for (let j = 0; j < y.length; j++) {
             p = y[j]['att_val']
@@ -209,8 +214,10 @@ $(document).ready(function () {
                 todo: file_name
             },
             success: function (res) {
-                tag_dict_from_backend[tag][`${type_img}_img`].push(file_name)
-                $(`div#tag_img_${type_img}`).append(get_tag_img_span(type_img, dynamic_id, file_name))
+                let x = $('#my_link')
+                tag_dict_from_backend[tag][`${type_img}_img`][file_name] = x.val()
+                $(`div#tag_img_${type_img}`).append(get_tag_img_span(type_img, dynamic_id, file_name, x.val()))
+                x.val('')
             }
         });
     });
@@ -228,9 +235,10 @@ $(document).ready(function () {
                 todo: file_name
             },
             success: function (res) {
-                tag_dict_from_backend[tag]['att'][att_key][`${type_img}_img`].push(file_name)
-                $(`#tag_att_img_${type_img}_${att_key}`).append(get_att_img_span(type_img, dynamic_id, file_name, att_key))
-
+                let x = $('#my_link')
+                tag_dict_from_backend[tag]['att'][att_key][`${type_img}_img`][file_name] = x.val()
+                $(`#tag_att_img_${type_img}_${att_key}`).append(get_att_img_span(type_img, dynamic_id, file_name, att_key, x.val()))
+                x.val('')
             }
         });
     });
@@ -254,7 +262,7 @@ $(document).ready(function () {
         let dynamic_id = $(this).attr('dynamic_id');
         let type_img = $(this).attr('type_img');
         let arr = tag_dict_from_backend[selected_tag_name][`${type_img}_img`]
-        arr.splice(arr.indexOf(file_name), 1);
+        delete arr[file_name];
         $(`span#tag_img_${type_img}_${dynamic_id}`).remove();
         $.ajax({
             type: 'POST',
@@ -271,7 +279,7 @@ $(document).ready(function () {
         let type_img = $(this).attr('type_img');
         let att_key = $(this).attr('att_key');
         let arr = tag_dict_from_backend[selected_tag_name]['att'][att_key][`${type_img}_img`]
-        arr.splice(arr.indexOf(file_name), 1);
+        delete arr[file_name];
         $(`span#tag_att_img_${type_img}_${dynamic_id}`).remove();
         $.ajax({
             type: 'POST',

@@ -2,9 +2,7 @@ import glob
 import json
 import os
 
-import pandas as pd
 from lxml import etree
-from numpy import take
 
 tag_dic = {}
 prod_name = ''
@@ -36,9 +34,9 @@ def xml_traverse(root):
             'prod': prod_name,
             'tag_desc': '',
             'count': 1,
-            'xml_img': [],
-            'pdf_img': [],
-            'check_img': [],
+            'xml_img': {},
+            'pdf_img': {},
+            'check_img': {},
             'att': {}
         }
     for key, val in root.attrib.items():
@@ -48,9 +46,9 @@ def xml_traverse(root):
                 'prod': prod_name,
                 'att_key': key,
                 'att_desc': '',
-                'xml_img': [],
-                'pdf_img': [],
-                'check_img': [],
+                'xml_img': {},
+                'pdf_img': {},
+                'check_img': {}
             }
             tag_dic[tag_name]['att'][key]['att_val'] = {
                 val: file_name
@@ -127,5 +125,5 @@ def process_xml_master():
 
 
 if __name__ == '__main__':
-    # process_xml()
-    process_xml_master()
+    process_xml()
+    # process_xml_master()
