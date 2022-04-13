@@ -97,7 +97,13 @@ def process_xml_master():
 
     for x in ls:
         os.makedirs(f'static/img/{prod}/att/{x}', exist_ok=True)
-    tag_master_dict = {}
+
+    try:
+        with open(f'static/json/tag_master.json') as f:
+            tag_master_dict = json.load(f)
+    except:
+        tag_master_dict = {}
+
     for json_file in glob.glob("static/json/prod/*.json"):
         with open(json_file) as f:
             x = json.load(f)

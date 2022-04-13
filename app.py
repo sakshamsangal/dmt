@@ -30,7 +30,7 @@ def save():
 
 def get_file_path(prod):
     global prod_name
-    if prod == 'tm' or prod== 'tag_master':
+    if prod == 'tm' or prod == 'tag_master':
         prod_name = 'tag_master'
         pa = f'static/json/{prod_name}.json'
     else:
@@ -48,10 +48,10 @@ def hello_world(prod):
     return render_template('index.html', tag_dict=x, json_file=prod_name)
 
 
-
 @app.route('/favicon.ico')
 def favicon():
-    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico',
+                               mimetype='image/vnd.microsoft.icon')
 
 
 @app.route('/')
