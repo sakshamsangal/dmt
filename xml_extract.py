@@ -103,11 +103,7 @@ def process_xml_master():
             x = json.load(f)
             for key, val in x.items():
                 if key in tag_master_dict:
-                    print('===========')
-
                     for k, v in x[key]['att'].items():
-                        print('===========')
-                        print(k, v)
                         if k in tag_master_dict[key]['att']:
                             temp = {**tag_master_dict[key]['att'][k]['att_val'], **x[key]['att'][k]['att_val']}
                             n_items = {k: temp[k] for k in list(temp)[:12]}
