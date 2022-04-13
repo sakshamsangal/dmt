@@ -12,31 +12,26 @@ def gen_docx():
     with open('static/json/prod/msg.json') as f:
         tag_dict = json.load(f)
     context = {'row_contents': []}
-    c = 1
-    ls = ['body', 'to']
-    keys = tag_dict.keys()
-    for item in ls:
-        if item in keys:
-            x = tag_dict[item]
-            x['rule_no'] = c
-            c += 1
-            for m1 in genre:
+    ls = ['body', 'to', 'from']
+    for rule_count, item in enumerate(ls):
+        tag_dict[item]['rule_count'] = rule_count + 1
+        for img_genre in genre:
+            temp = []
+            for k in tag_dict[item][img_genre]:
+                temp.append(InlineImage(doc, f'static/img/{k}', img_size))
+            tag_dict[item][img_genre] = temp
+
+        z = []
+        for y in tag_dict[item]['att'].values():
+            for img_genre in genre:
                 temp = []
-                for k in x[m1]:
+                for k in y[img_genre]:
                     temp.append(InlineImage(doc, f'static/img/{k}', img_size))
-                x[m1] = temp
+                y[img_genre] = temp
 
-            z = []
-            for y in x['att'].values():
-                for m1 in genre:
-                    temp = []
-                    for k in y[m1]:
-                        temp.append(InlineImage(doc, f'static/img/{k}', img_size))
-                    y[m1] = temp
-
-                z.append(y)
-            x['att'] = z
-            context['row_contents'].append(x)
+            z.append(y)
+        tag_dict[item]['att'] = z
+        context['row_contents'].append(tag_dict[item])
 
 
     doc.render(context)
