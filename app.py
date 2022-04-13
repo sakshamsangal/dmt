@@ -44,7 +44,6 @@ def hello_world(prod):
     global x
     with open(get_file_path(prod)) as f:
         x = json.load(f)
-    print(x)
     return render_template('index.html', tag_dict=x, json_file=prod_name)
 
 
@@ -63,7 +62,6 @@ def landing_page():
 def move_to_bin():
     if request.method == "POST":
         source = request.form['file']
-        print(source)
         os.replace(f'static/img/{source}', f'static/bin/{os.path.basename(source)}')
         return {}
 
@@ -80,7 +78,6 @@ def show_has_rule():
         for k, x in x.items():
             if x[flag]:
                 y[k] = x
-        print(y)
         return jsonify(y)
 
 
