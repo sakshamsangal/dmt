@@ -78,7 +78,16 @@ $(document).ready(function () {
     function append_accordion(y, accordionExample) {
         console.log('sak')
         console.log(y)
+
         for (let j = 0; j < y.length; j++) {
+            p = y[j]['att_val']
+            t = '<ul>'
+            for (var key in p) {
+                if (p.hasOwnProperty(key)) {
+                    t += `<li>${key} : ${p[key]}</li>`
+                }
+            }
+            t += '</ul>'
             let x = y[j]['att_key']
             accordionExample.append(`
             <div class="accordion-item">
@@ -90,7 +99,7 @@ $(document).ready(function () {
 
                 <div id="collapse${x}" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                 <div class="accordion-body" id="accordionExample${x}">
-                    <div>${y[j]['att_val']}</div>
+                    <div>${t}</div>
                         <textarea class="form-control att_desc" id="att_desc_${x}" att_key="${x}" rows="3">${y[j]['att_desc']}</textarea>
                     <ul class="list-group">
                         ${temp_fun(x)}                               

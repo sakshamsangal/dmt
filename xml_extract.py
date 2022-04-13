@@ -4,6 +4,7 @@ import os
 
 import pandas as pd
 from lxml import etree
+from numpy import take
 
 tag_dic = {}
 prod_name = ''
@@ -50,12 +51,12 @@ def xml_traverse(root):
                 'xml_img': [],
                 'pdf_img': [],
                 'check_img': [],
-                'att_val': set(),
             }
-            tag_dic[tag_name]['att'][key]['att_val'].add(val)
+            tag_dic[tag_name]['att'][key]['att_val'] = {
+                val: file_name
+            }
         else:
-            if len(tag_dic[tag_name]['att'][key]['att_val']) < 10:
-                tag_dic[tag_name]['att'][key]['att_val'].add(val)
+            tag_dic[tag_name]['att'][key]['att_val'][val] = file_name
 
     for child in root:
         if not (type(child) == etree._ProcessingInstruction):
@@ -102,11 +103,15 @@ def process_xml_master():
             x = json.load(f)
             for key, val in x.items():
                 if key in tag_master_dict:
+                    print('===========')
+
                     for k, v in x[key]['att'].items():
+                        print('===========')
+                        print(k, v)
                         if k in tag_master_dict[key]['att']:
-                            temp = [*tag_master_dict[key]['att'][k]['att_val'], *x[key]['att'][k]['att_val']]
-                            temp = temp[:15]
-                            tag_master_dict[key]['att'][k]['att_val'] = set(temp)
+                            temp = {**tag_master_dict[key]['att'][k]['att_val'], **x[key]['att'][k]['att_val']}
+                            n_items = {k: temp[k] for k in list(temp)[:12]}
+                            tag_master_dict[key]['att'][k]['att_val'] = n_items
                         else:
                             tag_master_dict[key]['att'][k] = v
                 else:
@@ -120,5 +125,5 @@ def process_xml_master():
 
 
 if __name__ == '__main__':
-    process_xml()
+    # process_xml()
     process_xml_master()
