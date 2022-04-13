@@ -31,7 +31,7 @@ def xml_traverse(root):
             'rule': '',
             'citation': '',
             'is_rendered': '',
-            'temp': '',
+            'link': '',
             'file_name': file_name,
             'prod': prod_name,
             'tag_desc': '',
