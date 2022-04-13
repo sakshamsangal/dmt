@@ -83,6 +83,7 @@ def process_xml():
             xml_traverse(root)
             # # df = pd.DataFrame(tag_dic.values())
             # # df.to_csv('temp1.csv', index=False)
+        os.makedirs('static/json/prod', exist_ok=True)
         with open(f'static/json/prod/{prod}.json', 'w', encoding='utf8') as f:
             json.dump(tag_dic, f, indent=4, cls=SetEncoder)
 
@@ -119,5 +120,5 @@ def process_xml_master():
 
 
 if __name__ == '__main__':
-    # process_xml()
+    process_xml()
     process_xml_master()
