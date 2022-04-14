@@ -16,11 +16,9 @@ class SetEncoder(json.JSONEncoder):
         return json.JSONEncoder.default(self, obj)
 
 
-def xml_traverse(root):
+def xml_traverse(root, xpath):
     tag_name = etree.QName(root).localname
-    if tag_name in tag_dic:
-        tag_dic[tag_name]['count'] += 1
-    else:
+    if tag_name not in tag_dic:
         tag_dic[tag_name] = {
             'tag': tag_name,
             'map_tag': '',
@@ -33,12 +31,14 @@ def xml_traverse(root):
             'file_name': file_name,
             'prod': prod_name,
             'tag_desc': '',
-            'count': 1,
+            'xpath': {},
             'xml_img': {},
             'pdf_img': {},
             'check_img': {},
             'att': {}
         }
+    tag_dic[tag_name]['xpath'][xpath] = file_name
+
     for key, val in root.attrib.items():
         if key not in tag_dic[tag_name]['att']:
             tag_dic[tag_name]['att'][key] = {
@@ -58,7 +58,7 @@ def xml_traverse(root):
 
     for child in root:
         if not (type(child) == etree._ProcessingInstruction):
-            xml_traverse(child)
+            xml_traverse(child, f'{xpath}/{etree.QName(child).localname}')
 
 
 def process_xml():
@@ -79,7 +79,7 @@ def process_xml():
             print(file_name)
             tree = etree.parse(xml_file)
             root = tree.getroot()
-            xml_traverse(root)
+            xml_traverse(root, etree.QName(root).localname)
             # # df = pd.DataFrame(tag_dic.values())
             # # df.to_csv('temp1.csv', index=False)
         os.makedirs('static/json/prod', exist_ok=True)
@@ -107,6 +107,9 @@ def process_xml_master():
             x = json.load(f)
             for key, val in x.items():
                 if key in tag_master_dict:
+                    for k, v in x[key]['xpath'].items():
+                        tag_master_dict[key]['xpath'][k] = v
+
                     for k, v in x[key]['att'].items():
                         if k in tag_master_dict[key]['att']:
                             temp = {**tag_master_dict[key]['att'][k]['att_val'], **x[key]['att'][k]['att_val']}
@@ -125,5 +128,5 @@ def process_xml_master():
 
 
 if __name__ == '__main__':
-    process_xml()
-    # process_xml_master()
+    # process_xml()
+    process_xml_master()

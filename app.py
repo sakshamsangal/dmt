@@ -47,6 +47,16 @@ def hello_world(prod):
     return render_template('index.html', tag_dict=x, json_file=prod_name)
 
 
+
+@app.route('/x/<string:prod>/<string:tag>', methods=["GET"])
+def xpath(prod,tag):
+    global x
+    with open(get_file_path(prod)) as f:
+        x = json.load(f)
+    return render_template('xpath.html', tag_dict=x, json_file=prod_name, xpath=x[tag]['xpath'])
+
+
+
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico',
