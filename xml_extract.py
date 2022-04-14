@@ -128,5 +128,5 @@ def process_xml_master():
 
 
 if __name__ == '__main__':
-    # process_xml()
+    process_xml()
     process_xml_master()
