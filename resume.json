@@ -1,0 +1,101 @@
+{
+  "dev":"Python/Java",
+  "personal_info": {
+    "name": "Saksham Sangal",
+    "age": "25 year",
+    "dob": "27-Nov-1996",
+    "mobile_no": "8218312880",
+    "email": "sakshamsangal111@gmail.com",
+    "address": "HN-153, Adarsh colony, Muzaffarnagar, Pin:251001, Uttar Pradesh"
+  },
+  "summary": "DC-Analyst at Deloitte USI. Java developer with 6 months of experience at Decimal Technology(former) and Wipro (former, 13 months experience). Major interest in competitive programming in java, data structure & algorithm, backend development. Worked on many major and minor projects for competitions, trainings, and for self-learning. Also worked on web-based projects JavaScript and Angular.",
+  "skill": {
+    "1": "Data structure and algorithm",
+    "2": "Python, Java, Spring framework, MySQL"
+  },
+  "award": [
+    "KPIT innovation award",
+    "Smart India Hackathon, 2018"
+  ],
+  "edu": {
+    "grad": {
+      "course": "B.Tech",
+      "campus": "Meerut Institute of Engineering and Technology [MIET]",
+      "branch": "CSE",
+      "board": "A.P.J. Abdul Kalam Technical University, Lucknow",
+      "duration": "4 year",
+      "result": "75%",
+      "start": "2014",
+      "end": "2018"
+    },
+    "12": {
+      "course": "Intermediate",
+      "branch": "PCM",
+      "board": "CBSE",
+      "result": "88.8%",
+      "start": "2013",
+      "end": "2014"
+    },
+    "10": {
+      "course": "Matriculation",
+      "board": "CBSE",
+      "result": "9.2 CGPA",
+      "start": "2011",
+      "end": "2012"
+    }
+  },
+  "work_exp": {
+    "total_exp": "30 month",
+    "companies": [
+      {
+        "start": "July 2021",
+        "end": "Present",
+        "location": "Gurugram",
+        "name": "Deloitte USI",
+        "duration": "10 months",
+        "role": "DC Analyst",
+        "work": "Serving Deloitte USI as Analyst. Currently I am on bench (trained on Salesforce and Salesforce CPQ)."
+      },
+      {
+        "start": "Nov 2020",
+        "end": "May 2021",
+        "name": "Decimal Technology",
+        "location": "Gurugram",
+        "duration": "7 months",
+        "role": "Associate Engineer Level 1 - Java",
+        "work": "Consumed and developed REST API, Saved the response into MySQL database using hibernate and java spring boot. Also involved in deployment of jar and angular build on UAT and prod server. Integrated tickets from service now and internal ticket mgt. system. Created REST API for the project (add, view, view-all, update API etc.). using java spring boot."
+      },
+      {
+        "start": "July 2018",
+        "end": "August 2019",
+        "name": "Wipro Limited",
+        "location": "Greater Noida",
+        "duration": "13 months",
+        "role": "Project Engineer",
+        "work": "I was responsible for adding new feature to existing spring boot application and also involved in solving technical tickets through service-now portal."
+      }
+    ]
+  },
+  "ref": [
+    {
+      "site": "linkedin",
+      "link": "https://www.linkedin.com/in/sakshamsangal111/"
+    },
+    {
+      "site": "codechef",
+      "link": "https://www.codechef.com/users/sakshamsangal"
+    },
+    {
+      "site": "hackerrank",
+      "link": "https://www.hackerrank.com/sakshamsangal"
+    },
+    {
+      "site": "github",
+      "link": "https://www.github.com/sakshamsangal"
+    },
+    {
+      "site": "stackoverflow",
+      "link": "https://www.stackoverflow.com/users/9408445/saksham-sangal"
+    }
+  ]
+}

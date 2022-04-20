@@ -1,0 +1,5 @@
+tag,tag_xml,tag_text,file_name,xpath,id,id1
+author,"<author id=""bk101"" id1=""bk101"">Gambardella
+
+            Matthewsad <sak>hilloe</sak> hi1212</author>",Gambardella Matthewsad,book.xml,catalog/book/author,bk101,bk101
+author,"<author id1=""bk101"">Corets, Eva</author>","Corets, Eva",book.xml,catalog/book/author,,bk101

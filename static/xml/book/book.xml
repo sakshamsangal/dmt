@@ -1,7 +1,9 @@
 <?xml version="1.0"?>
 <catalog>
     <book id="bk101">
-        <author>Gambardella, Matthew</author>
+        <author id="bk101" id1="bk101">Gambardella
+
+            Matthewsad <sak>hilloe</sak> hi1212</author>
         <title>XML Developer's Guide</title>
         <genre>Computer</genre>
         <price>44.95</price>
@@ -19,7 +21,7 @@
         </note>
     </book>
     <book id="bk103">
-        <author>Corets, Eva</author>
+        <author id1="bk101">Corets, Eva</author>
         <title>Maeve Ascendant</title>
         <genre>Fantasy</genre>
         <price>5.95</price>
