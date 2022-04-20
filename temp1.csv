@@ -1,5 +1,3 @@
-tag,tag_xml,tag_text,file_name,xpath,id,id1
-author,"<author id=""bk101"" id1=""bk101"">Gambardella
-
-            Matthewsad <sak>hilloe</sak> hi1212</author>",Gambardella Matthewsad,book.xml,catalog/book/author,bk101,bk101
-author,"<author id1=""bk101"">Corets, Eva</author>","Corets, Eva",book.xml,catalog/book/author,,bk101
+author,title
+"{'tag': 'author', 'tag_xml': '<author id=""bk101"" id1=""bk101"">Gambardella\n\n            Matthewsad <sak>hilloe</sak> hi1212</author>', 'tag_text': 'Gambardella Matthewsad', 'file_name': 'book.xml', 'xpath': 'catalog/book/author', 'id': 'bk101', 'id1': 'bk101'}","{'tag': 'title', 'tag_xml': ""<title>XML Developer's Guide</title>"", 'tag_text': ""XML Developer's Guide"", 'file_name': 'book.xml', 'xpath': 'catalog/book/title'}"
+"{'tag': 'author', 'tag_xml': '<author id1=""bk101"">Corets, Eva</author>', 'tag_text': 'Corets, Eva', 'file_name': 'book.xml', 'xpath': 'catalog/book/author', 'id1': 'bk101'}","{'tag': 'title', 'tag_xml': '<title>Maeve Ascendant</title>', 'tag_text': 'Maeve Ascendant', 'file_name': 'book.xml', 'xpath': 'catalog/book/title'}"

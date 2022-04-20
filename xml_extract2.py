@@ -5,7 +5,10 @@ import os
 import pandas as pd
 from lxml import etree
 
-tag_dic = []
+tag_dic = {
+    'author': [],
+    'title': []
+}
 prod_name = ''
 file_name = ''
 
@@ -19,7 +22,7 @@ class SetEncoder(json.JSONEncoder):
 
 def xml_traverse(root, xpath):
     tag_name = etree.QName(root).localname
-    if tag_name == 'author':
+    if tag_name in tag_dic.keys():
         x = {
             'tag': tag_name,
             'tag_xml': etree.tostring(root).strip().decode('UTF-8'),
@@ -29,7 +32,7 @@ def xml_traverse(root, xpath):
         }
         for k, v in root.attrib.items():
             x[k] = v
-        tag_dic.append(x)
+        tag_dic[tag_name].append(x)
 
     for child in root:
         if not (type(child) == etree._ProcessingInstruction):
@@ -47,8 +50,11 @@ def process_xml():
             tree = etree.parse(xml_file)
             root = tree.getroot()
             xml_traverse(root, etree.QName(root).localname)
-            df = pd.DataFrame(tag_dic)
-            df.to_csv('temp1.csv', index=False)
+
+            with pd.ExcelWriter("temp.xlsx") as writer:
+                for x in tag_dic.keys():
+                    df = pd.DataFrame(tag_dic[x])
+                    df.to_excel(writer, sheet_name=x, index=False)
 
 
 if __name__ == '__main__':
