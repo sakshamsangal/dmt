@@ -44,6 +44,8 @@ def hello_world(prod):
     global x
     with open(get_file_path(prod)) as f:
         x = json.load(f)
+
+    print('hw')
     return render_template('index.html', tag_dict=x, json_file=prod_name)
 
 

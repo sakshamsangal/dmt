@@ -21,12 +21,8 @@ def xml_traverse(root, xpath):
     if tag_name not in tag_dic:
         tag_dic[tag_name] = {
             'tag': tag_name,
+            'cat': [],
             'map_tag': '',
-            'has_rule': '',
-            'has_query': '',
-            'rule': '',
-            'citation': '',
-            'is_rendered': '',
             'link': '',
             'file_name': file_name,
             'prod': prod_name,
@@ -129,4 +125,4 @@ def process_xml_master():
 
 if __name__ == '__main__':
     process_xml()
-    process_xml_master()
+    # process_xml_master()

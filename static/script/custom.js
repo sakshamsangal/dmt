@@ -1,11 +1,11 @@
 $(document).ready(function () {
     var selected_tag_name = ''
-    var table = $('#example').DataTable({
-        "dom": '<"pull-left"f><"pull-right"l>tip',
-        language: {search: "", searchPlaceholder: "Search..."},
-        "paging": false,
-        "info": false
-    });
+    // var table = $('#example').DataTable({
+    //     "dom": '<"pull-left"f><"pull-right"l>tip',
+    //     language: {search: "", searchPlaceholder: "Search..."},
+    //     "paging": false,
+    //     "info": false
+    // });
     var tag_table = $('#tag_list_table').DataTable({
         scrollY: '72vh',
         select: true,
@@ -116,6 +116,33 @@ $(document).ready(function () {
         }
     }
 
+    let total_cat = ['sak', 'san', 'lavi', 'Alaska', 'Wisconsin']
+
+    function append_cat(tag_name) {
+        console.log('hello')
+
+        // selectize.addItem('value', 'silent');
+
+        selectize.addOption([1,2]);
+
+        // let cat = $("#select_state1")
+        // cat.empty()
+        // let arr_cat = tag_dict_from_backend[tag_name]['cat']
+        // let temp =  '<option value="">Define category...</option>'
+        // // let temp =''
+        // for (let i = 0; i < total_cat.length; i++) {
+        //     if (arr_cat.includes(total_cat[i])) {
+        //         temp += `<option value="${total_cat[i]}" selected>${total_cat[i]}</option>`
+        //     } else {
+        //         temp += `<option value="${total_cat[i]}">${total_cat[i]}</option>`
+        //     }
+        // }
+        // console.log(arr_cat)
+        // cat.append(temp)
+        // selectize
+    }
+
+
     $('#has_rule').change(function () {
         tag_dict_from_backend[selected_tag_name]['has_rule'] = !tag_dict_from_backend[selected_tag_name]['has_rule']
     });
@@ -124,11 +151,16 @@ $(document).ready(function () {
     });
     $('#tag_list_table tbody').on('click', 'tr', function () {
         $(".tag_data").show();
+
+
         let accordionExample = $("#accordionExample")
         accordionExample.empty();
 
         let data = tag_table.row(this).data()[0];
         selected_tag_name = data
+
+        append_cat(selected_tag_name)
+
 
         let tag_name = tag_dict_from_backend[data]['tag']
 
@@ -149,7 +181,6 @@ $(document).ready(function () {
         append_tag('pdf', tag_dict_from_backend[data]['pdf_img'])
         append_tag('check', tag_dict_from_backend[data]['check_img'])
         let list_of_att = Object.values(tag_dict_from_backend[data]['att'])
-        console.log(list_of_att)
         append_accordion(list_of_att, accordionExample)
         for (let j = 0; j < list_of_att.length; j++) {
             let att_key = list_of_att[j]['att_key']
