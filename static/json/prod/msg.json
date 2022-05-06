@@ -2,7 +2,8 @@
     "body": {
         "att": {},
         "cat": [
-            "used"
+            "used",
+            "link"
         ],
         "check_img": {},
         "file_name": "msg.xml",
@@ -64,7 +65,8 @@
     "messages": {
         "att": {},
         "cat": [
-            "used"
+            "used",
+            "link"
         ],
         "check_img": {},
         "file_name": "msg.xml",
