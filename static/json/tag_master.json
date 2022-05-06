@@ -1,0 +1,301 @@
+{
+    "catalog": {
+        "tag": "catalog",
+        "cat": [],
+        "map_tag": "",
+        "link": "",
+        "file_name": "book.xml",
+        "prod": "book",
+        "tag_desc": "",
+        "xpath": {
+            "catalog": "book.xml"
+        },
+        "xml_img": {},
+        "pdf_img": {},
+        "check_img": {},
+        "att": {}
+    },
+    "book": {
+        "tag": "book",
+        "cat": [],
+        "map_tag": "",
+        "link": "",
+        "file_name": "book.xml",
+        "prod": "book",
+        "tag_desc": "",
+        "xpath": {
+            "catalog/book": "book.xml"
+        },
+        "xml_img": {},
+        "pdf_img": {},
+        "check_img": {},
+        "att": {
+            "id": {
+                "file_name": "book.xml",
+                "prod": "book",
+                "att_key": "id",
+                "att_desc": "",
+                "xml_img": {},
+                "pdf_img": {},
+                "check_img": {},
+                "att_val": {
+                    "bk101": "book.xml",
+                    "bk102": "book.xml",
+                    "bk103": "book.xml"
+                }
+            }
+        }
+    },
+    "author": {
+        "tag": "author",
+        "cat": [],
+        "map_tag": "",
+        "link": "",
+        "file_name": "book.xml",
+        "prod": "book",
+        "tag_desc": "",
+        "xpath": {
+            "catalog/book/author": "book.xml"
+        },
+        "xml_img": {},
+        "pdf_img": {},
+        "check_img": {},
+        "att": {
+            "id": {
+                "file_name": "book.xml",
+                "prod": "book",
+                "att_key": "id",
+                "att_desc": "",
+                "xml_img": {},
+                "pdf_img": {},
+                "check_img": {},
+                "att_val": {
+                    "bk101": "book.xml"
+                }
+            },
+            "id1": {
+                "file_name": "book.xml",
+                "prod": "book",
+                "att_key": "id1",
+                "att_desc": "",
+                "xml_img": {},
+                "pdf_img": {},
+                "check_img": {},
+                "att_val": {
+                    "bk101": "book.xml"
+                }
+            }
+        }
+    },
+    "sak": {
+        "tag": "sak",
+        "cat": [],
+        "map_tag": "",
+        "link": "",
+        "file_name": "book.xml",
+        "prod": "book",
+        "tag_desc": "",
+        "xpath": {
+            "catalog/book/author/sak": "book.xml"
+        },
+        "xml_img": {},
+        "pdf_img": {},
+        "check_img": {},
+        "att": {}
+    },
+    "title": {
+        "tag": "title",
+        "cat": [],
+        "map_tag": "",
+        "link": "",
+        "file_name": "book.xml",
+        "prod": "book",
+        "tag_desc": "",
+        "xpath": {
+            "catalog/book/title": "book.xml"
+        },
+        "xml_img": {},
+        "pdf_img": {},
+        "check_img": {},
+        "att": {}
+    },
+    "genre": {
+        "tag": "genre",
+        "cat": [],
+        "map_tag": "",
+        "link": "",
+        "file_name": "book.xml",
+        "prod": "book",
+        "tag_desc": "",
+        "xpath": {
+            "catalog/book/genre": "book.xml"
+        },
+        "xml_img": {},
+        "pdf_img": {},
+        "check_img": {},
+        "att": {}
+    },
+    "price": {
+        "tag": "price",
+        "cat": [],
+        "map_tag": "",
+        "link": "",
+        "file_name": "book.xml",
+        "prod": "book",
+        "tag_desc": "",
+        "xpath": {
+            "catalog/book/price": "book.xml"
+        },
+        "xml_img": {},
+        "pdf_img": {},
+        "check_img": {},
+        "att": {}
+    },
+    "publish_date": {
+        "tag": "publish_date",
+        "cat": [],
+        "map_tag": "",
+        "link": "",
+        "file_name": "book.xml",
+        "prod": "book",
+        "tag_desc": "",
+        "xpath": {
+            "catalog/book/publish_date": "book.xml"
+        },
+        "xml_img": {},
+        "pdf_img": {},
+        "check_img": {},
+        "att": {}
+    },
+    "description": {
+        "tag": "description",
+        "cat": [],
+        "map_tag": "",
+        "link": "",
+        "file_name": "book.xml",
+        "prod": "book",
+        "tag_desc": "",
+        "xpath": {
+            "catalog/book/description": "book.xml"
+        },
+        "xml_img": {},
+        "pdf_img": {},
+        "check_img": {},
+        "att": {}
+    },
+    "note": {
+        "tag": "note",
+        "cat": [],
+        "map_tag": "",
+        "link": "",
+        "file_name": "book.xml",
+        "prod": "book",
+        "tag_desc": "",
+        "xpath": {
+            "catalog/book/note": "book.xml",
+            "messages/note": "msg.xml"
+        },
+        "xml_img": {},
+        "pdf_img": {},
+        "check_img": {},
+        "att": {
+            "id": {
+                "file_name": "book.xml",
+                "prod": "book",
+                "att_key": "id",
+                "att_desc": "",
+                "xml_img": {},
+                "pdf_img": {},
+                "check_img": {},
+                "att_val": {
+                    "502": "msg.xml",
+                    "501": "msg.xml"
+                }
+            }
+        }
+    },
+    "to": {
+        "tag": "to",
+        "cat": [],
+        "map_tag": "",
+        "link": "",
+        "file_name": "book.xml",
+        "prod": "book",
+        "tag_desc": "",
+        "xpath": {
+            "catalog/book/note/to": "book.xml",
+            "messages/note/to": "msg.xml"
+        },
+        "xml_img": {},
+        "pdf_img": {},
+        "check_img": {},
+        "att": {}
+    },
+    "from": {
+        "tag": "from",
+        "cat": [],
+        "map_tag": "",
+        "link": "",
+        "file_name": "book.xml",
+        "prod": "book",
+        "tag_desc": "",
+        "xpath": {
+            "catalog/book/note/from": "book.xml",
+            "messages/note/from": "msg.xml"
+        },
+        "xml_img": {},
+        "pdf_img": {},
+        "check_img": {},
+        "att": {}
+    },
+    "heading": {
+        "tag": "heading",
+        "cat": [],
+        "map_tag": "",
+        "link": "",
+        "file_name": "book.xml",
+        "prod": "book",
+        "tag_desc": "",
+        "xpath": {
+            "catalog/book/note/heading": "book.xml",
+            "messages/note/heading": "msg.xml"
+        },
+        "xml_img": {},
+        "pdf_img": {},
+        "check_img": {},
+        "att": {}
+    },
+    "body": {
+        "tag": "body",
+        "cat": [],
+        "map_tag": "",
+        "link": "",
+        "file_name": "book.xml",
+        "prod": "book",
+        "tag_desc": "",
+        "xpath": {
+            "catalog/book/note/body": "book.xml",
+            "messages/note/body": "msg.xml"
+        },
+        "xml_img": {},
+        "pdf_img": {},
+        "check_img": {},
+        "att": {}
+    },
+    "messages": {
+        "tag": "messages",
+        "cat": [],
+        "map_tag": "",
+        "link": "",
+        "file_name": "msg.xml",
+        "prod": "msg",
+        "tag_desc": "",
+        "xpath": {
+            "messages": "msg.xml"
+        },
+        "xml_img": {},
+        "pdf_img": {},
+        "check_img": {},
+        "att": {}
+    }
+}

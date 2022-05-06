@@ -73,11 +73,8 @@
                         <option value="has_rule">Has rule</option>
                     </select>
                 </li>
-                <li class="nav-item">
-                </li>
-                <li class="nav-item">
-                    <button id="search_flag" class="btn btn-secondary" type="button">Get tags</button>
-                </li>
+
+
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -109,13 +106,9 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-2">
-            <label for="select-state">States:</label>
-            <select id="select-state" multiple name="state[]">
-                <option value="">Select a state...</option>
-                <option value="AL">Alabama</option>
-                <option value="AK">Alaska</option>
-                <option value="WI">Wisconsin</option>
-                <option value="WY" selected>Wyoming</option>
+            <button id="search_flag" class="btn btn-secondary col-12" type="button">Get tags</button>
+            <select id="select_state1" multiple name="state0[]">
+                <option value="">search...</option>
             </select>
         </div>
         <div class="col-md-2">
@@ -137,7 +130,7 @@
         <div class="col-md-8">
             <div class="row tag_data">
                 <div class="col-md-4">
-                    <select id="select_state1" multiple name="state1[]">
+                    <select id="select_state2" multiple name="state1[]">
                         <option value="">Define category...</option>
                     </select>
 
@@ -242,6 +235,9 @@
 
 <script src="static/script/dark.js"></script>
 <script>
+    var total_cat = [];
+    sea_tag =
+    {{ sea_tag | tojson }}
     var prod = '{{ json_file }}'
     var selected_tag_name = ''
     $(".tag_data").hide();
@@ -249,8 +245,8 @@
     {{ tag_dict | tojson | safe }}
 
 </script>
-<script src="static/script/custom.js"></script>
 <script src="static/script/tag.js"></script>
+<script src="static/script/custom.js"></script>
 
 </body>
 
