@@ -52,7 +52,6 @@ def hello_world(prod):
 
     with open('static/json/sea_tag.json') as f:
         y = json.load(f)
-    print(y)
     return render_template('index.html', tag_dict=x, json_file=prod_name, sea_tag=y)
 
 
@@ -60,7 +59,6 @@ def hello_world(prod):
 @app.route('/x/<string:prod>/<string:tag>', methods=["GET"])
 def xpath(prod,tag):
     global x
-    print('ttag', tag)
     with open(get_file_path(prod)) as f:
         x = json.load(f)
     y = {}
@@ -69,7 +67,6 @@ def xpath(prod,tag):
             y = {**y, **v['xpath']}
     else:
         y = x[tag]['xpath']
-    print(y)
     return render_template('xpath.html', tag_dict=x, json_file=prod_name, xpath=y)
 
 
@@ -105,8 +102,6 @@ def sea_flag():
             x = json.load(f)
         z = {}
         for k, val in x.items():
-            print(flag)
-            print(set(val['cat']))
             if flag.issubset(set(val['cat'])):
                 z[k] = val
         return jsonify(z)
