@@ -116,13 +116,13 @@ def process_xml_master():
                 else:
                     tag_master_dict[key] = val
 
-        # df = pd.DataFrame(tag_dic.values())
-        # df.to_csv('tag_master.csv', index=False)
+    # df = pd.DataFrame(tag_dic.values())
+    # df.to_csv('tag_master.csv', index=False)
 
-    with open(f'static/json/tag_master.json', 'w', encoding='utf8') as f1:
-        json.dump(tag_master_dict, f1, indent=4, cls=SetEncoder)
+    # with open(f'static/json/tag_master.json', 'w', encoding='utf8') as f1:
+    #     json.dump(tag_master_dict, f1, indent=4, cls=SetEncoder)
 
 
 if __name__ == '__main__':
-    # process_xml()
-    process_xml_master()
+    process_xml()
+    # process_xml_master()
