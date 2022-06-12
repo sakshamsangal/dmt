@@ -1,0 +1,12 @@
+catalog
+catalog/book
+catalog/book/author
+catalog/book/author/sak
+catalog/book/title
+catalog/book/genre
+catalog/book/price
+catalog/book/publish_date
+catalog/book/description
+catalog/book/note
+catalog/book/note/to
+catalog/book/note/from

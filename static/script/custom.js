@@ -1,11 +1,51 @@
 $(document).ready(function () {
+    function ev() {
+        return function () {
+            tag_dict_from_backend[selected_tag_name]['cat'] = selectize2.getValue()
+            total_cat.push(...selectize2.getValue())
+        };
+    }
+
+    var $select1 = $("#select_state1").selectize({
+        create: false,
+        valueField: 'id',
+        labelField: 'id',
+        searchField: 'id',
+    });
+
+    var $select2 = $("#select_state2").selectize({
+        create: true,
+        valueField: 'id',
+        labelField: 'id',
+        searchField: 'id',
+        onBlur: ev('blur')
+    });
+
+
+    let selectize1 = $select1[0].selectize;
+    let selectize2 = $select2[0].selectize;
+
+    function append_cat2() {
+        total_cat = sea_tag['sea_tag']
+        console.log(total_cat)
+        let temp = []
+        for (let i = 0; i < total_cat.length; i++) {
+            temp.push({
+                "id": total_cat[i]
+            })
+        }
+        selectize1.addOption(temp);
+        selectize2.addOption(temp);
+    }
+
+    append_cat2()
+    function append_cat(tag_name) {
+        let arr_cat = tag_dict_from_backend[tag_name]['cat']
+        selectize2.setValue(arr_cat);
+    }
+
     var selected_tag_name = ''
-    // var table = $('#example').DataTable({
-    //     "dom": '<"pull-left"f><"pull-right"l>tip',
-    //     language: {search: "", searchPlaceholder: "Search..."},
-    //     "paging": false,
-    //     "info": false
-    // });
+
     var tag_table = $('#tag_list_table').DataTable({
         scrollY: '72vh',
         select: true,
@@ -55,7 +95,6 @@ $(document).ready(function () {
     function append_att(genre, y, att_key) {
         let tag_att_img = $(`#tag_att_img_${genre}_${att_key}`)
         tag_att_img.empty()
-        console.log('58', y)
         for (let key in y) {
             if (y.hasOwnProperty(key)) {
                 let dynamic_id = Date.now() + '_' + Math.floor(Math.random() * 1001)
@@ -116,33 +155,6 @@ $(document).ready(function () {
         }
     }
 
-    let total_cat = ['sak', 'san', 'lavi', 'Alaska', 'Wisconsin']
-
-    function append_cat(tag_name) {
-        console.log('hello')
-
-        // selectize.addItem('value', 'silent');
-
-        selectize.addOption([1,2]);
-
-        // let cat = $("#select_state1")
-        // cat.empty()
-        // let arr_cat = tag_dict_from_backend[tag_name]['cat']
-        // let temp =  '<option value="">Define category...</option>'
-        // // let temp =''
-        // for (let i = 0; i < total_cat.length; i++) {
-        //     if (arr_cat.includes(total_cat[i])) {
-        //         temp += `<option value="${total_cat[i]}" selected>${total_cat[i]}</option>`
-        //     } else {
-        //         temp += `<option value="${total_cat[i]}">${total_cat[i]}</option>`
-        //     }
-        // }
-        // console.log(arr_cat)
-        // cat.append(temp)
-        // selectize
-    }
-
-
     $('#has_rule').change(function () {
         tag_dict_from_backend[selected_tag_name]['has_rule'] = !tag_dict_from_backend[selected_tag_name]['has_rule']
     });
@@ -191,13 +203,15 @@ $(document).ready(function () {
     });
     $('#save').on('click', function (e) {
         // alert(prod)
+        // console.log(selectize.getValue())
         console.log(tag_dict_from_backend)
         $.ajax({
             type: 'POST',
             url: '/save',
             data: {
                 prod: prod,
-                todo: JSON.stringify(tag_dict_from_backend)
+                todo: JSON.stringify(tag_dict_from_backend),
+                todo1: JSON.stringify({'sea_tag': Array.from(new Set(total_cat))})
             },
             success: function (res) {
 
@@ -214,13 +228,13 @@ $(document).ready(function () {
     $('#search_flag').on('click', function (e) {
         // x= $( "#aioConceptName option:selected" ).value();
         $(".tag_data").hide();
-        let flag = $('#aioConceptName').val();
+        // let flag = $('#aioConceptName').val();
         $.ajax({
             type: 'POST',
-            url: '/show_has_rule',
+            url: '/sea_flag',
             data: {
                 prod: prod,
-                todo: flag
+                todo: JSON.stringify({'sea_tag':selectize1.getValue()})
             },
             success: function (data) {
                 console.log(data)

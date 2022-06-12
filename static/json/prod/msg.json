@@ -1,0 +1,134 @@
+{
+    "body": {
+        "att": {},
+        "cat": [
+            "used",
+            "link"
+        ],
+        "check_img": {},
+        "file_name": "msg.xml",
+        "link": "",
+        "map_tag": "",
+        "pdf_img": {},
+        "prod": "msg",
+        "tag": "body",
+        "tag_desc": "",
+        "xml_img": {},
+        "xpath": {
+            "messages/note/body": "msg.xml"
+        }
+    },
+    "from": {
+        "att": {},
+        "cat": [
+            "1",
+            "3"
+        ],
+        "check_img": {},
+        "file_name": "msg.xml",
+        "link": "",
+        "map_tag": "",
+        "pdf_img": {},
+        "prod": "msg",
+        "tag": "from",
+        "tag_desc": "",
+        "xml_img": {},
+        "xpath": {
+            "messages/note/from": "msg.xml"
+        }
+    },
+    "heading": {
+        "att": {},
+        "cat": [
+            "7",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "8"
+        ],
+        "check_img": {},
+        "file_name": "msg.xml",
+        "link": "",
+        "map_tag": "",
+        "pdf_img": {},
+        "prod": "msg",
+        "tag": "heading",
+        "tag_desc": "",
+        "xml_img": {},
+        "xpath": {
+            "messages/note/heading": "msg.xml"
+        }
+    },
+    "messages": {
+        "att": {},
+        "cat": [
+            "used",
+            "link"
+        ],
+        "check_img": {},
+        "file_name": "msg.xml",
+        "link": "",
+        "map_tag": "",
+        "pdf_img": {},
+        "prod": "msg",
+        "tag": "messages",
+        "tag_desc": "",
+        "xml_img": {},
+        "xpath": {
+            "messages": "msg.xml"
+        }
+    },
+    "note": {
+        "att": {
+            "id": {
+                "att_desc": "",
+                "att_key": "id",
+                "att_val": {
+                    "501": "msg.xml",
+                    "502": "msg.xml"
+                },
+                "check_img": {},
+                "file_name": "msg.xml",
+                "pdf_img": {},
+                "prod": "msg",
+                "xml_img": {}
+            }
+        },
+        "cat": [
+            "6"
+        ],
+        "check_img": {},
+        "file_name": "msg.xml",
+        "link": "",
+        "map_tag": "",
+        "pdf_img": {},
+        "prod": "msg",
+        "tag": "note",
+        "tag_desc": "",
+        "xml_img": {},
+        "xpath": {
+            "messages/note": "msg.xml"
+        }
+    },
+    "to": {
+        "att": {},
+        "cat": [
+            "used"
+        ],
+        "check_img": {},
+        "file_name": "msg.xml",
+        "link": "",
+        "map_tag": "",
+        "pdf_img": {},
+        "prod": "msg",
+        "tag": "to",
+        "tag_desc": "",
+        "xml_img": {},
+        "xpath": {
+            "messages/note/to": "msg.xml"
+        }
+    }
+}

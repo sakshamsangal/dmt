@@ -5,7 +5,7 @@ from PIL import ImageGrab
 from flask import Flask, render_template, request, jsonify, send_from_directory
 
 app = Flask(__name__)
-app.config["TEMPLATES_AUTO_RELOAD"] = True
+# app.config["TEMPLATES_AUTO_RELOAD"] = True
 prod_name = ''
 x = ''
 
@@ -25,6 +25,11 @@ def save():
     json_object = json.loads(request.form['todo'])
     with open(get_file_path(prod), 'w', encoding='utf8') as f:
         json.dump(json_object, f, indent=4)
+
+    json_object2 = json.loads(request.form['todo1'])
+    with open('static/json/sea_tag.json', 'w', encoding='utf8') as f:
+        json.dump(json_object2, f, indent=4)
+
     return {}
 
 
@@ -45,15 +50,15 @@ def hello_world(prod):
     with open(get_file_path(prod)) as f:
         x = json.load(f)
 
-    print('hw')
-    return render_template('index.html', tag_dict=x, json_file=prod_name)
+    with open('static/json/sea_tag.json') as f:
+        y = json.load(f)
+    return render_template('index.html', tag_dict=x, json_file=prod_name, sea_tag=y)
 
 
 
 @app.route('/x/<string:prod>/<string:tag>', methods=["GET"])
 def xpath(prod,tag):
     global x
-    print('ttag', tag)
     with open(get_file_path(prod)) as f:
         x = json.load(f)
     y = {}
@@ -62,7 +67,6 @@ def xpath(prod,tag):
             y = {**y, **v['xpath']}
     else:
         y = x[tag]['xpath']
-    print(y)
     return render_template('xpath.html', tag_dict=x, json_file=prod_name, xpath=y)
 
 
@@ -86,19 +90,21 @@ def move_to_bin():
         return {}
 
 
-@app.route('/show_has_rule', methods=['POST'])
-def show_has_rule():
+@app.route('/sea_flag', methods=['POST'])
+def sea_flag():
     if request.method == "POST":
-        flag = request.form['todo']
+        json_object = json.loads(request.form['todo'])
+        flag = set(json_object['sea_tag'])
         prod = request.form['prod']
+
         global x
         with open(get_file_path(prod)) as f:
             x = json.load(f)
-        y = {}
-        for k, x in x.items():
-            if x[flag]:
-                y[k] = x
-        return jsonify(y)
+        z = {}
+        for k, val in x.items():
+            if flag.issubset(set(val['cat'])):
+                z[k] = val
+        return jsonify(z)
 
 
 if __name__ == '__main__':

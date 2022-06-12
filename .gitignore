@@ -1,5 +1,4 @@
 static/img
-static/json
 .DS_Store
 .env
 .flaskenv
