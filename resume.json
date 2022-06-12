@@ -1,8 +1,8 @@
 {
-  "dev":"Python/Java",
+  "role": "Analyst",
   "personal_info": {
     "name": "Saksham Sangal",
-    "age": "25 year",
+    "age": "25 years",
     "dob": "27-Nov-1996",
     "mobile_no": "8218312880",
     "email": "sakshamsangal111@gmail.com",
@@ -10,8 +10,8 @@
   },
   "summary": "DC-Analyst at Deloitte USI. Java developer with 6 months of experience at Decimal Technology(former) and Wipro (former, 13 months experience). Major interest in competitive programming in java, data structure & algorithm, backend development. Worked on many major and minor projects for competitions, trainings, and for self-learning. Also worked on web-based projects JavaScript and Angular.",
   "skill": {
-    "1": "Data structure and algorithm",
-    "2": "Python, Java, Spring framework, MySQL"
+    "s1": "Data structure and algorithm",
+    "s2": "Python, Java, Spring framework, MySQL"
   },
   "award": [
     "KPIT innovation award",
@@ -22,13 +22,13 @@
       "course": "B.Tech",
       "campus": "Meerut Institute of Engineering and Technology [MIET]",
       "branch": "CSE",
-      "board": "A.P.J. Abdul Kalam Technical University, Lucknow",
+      "board": "AKTU, Lucknow",
       "duration": "4 year",
       "result": "75%",
       "start": "2014",
       "end": "2018"
     },
-    "12": {
+    "c12": {
       "course": "Intermediate",
       "branch": "PCM",
       "board": "CBSE",
@@ -36,7 +36,7 @@
       "start": "2013",
       "end": "2014"
     },
-    "10": {
+    "c10": {
       "course": "Matriculation",
       "board": "CBSE",
       "result": "9.2 CGPA",
@@ -45,9 +45,10 @@
     }
   },
   "work_exp": {
-    "total_exp": "30 month",
-    "companies": [
+    "total_exp": "2.5+ years",
+    "comp": [
       {
+        "img": "static/img/resume/del.png",
         "start": "July 2021",
         "end": "Present",
         "location": "Gurugram",
@@ -57,15 +58,17 @@
         "work": "Serving Deloitte USI as Analyst. Currently I am on bench (trained on Salesforce and Salesforce CPQ)."
       },
       {
+        "img": "static/img/resume/dec.png",
         "start": "Nov 2020",
         "end": "May 2021",
         "name": "Decimal Technology",
         "location": "Gurugram",
         "duration": "7 months",
-        "role": "Associate Engineer Level 1 - Java",
+        "role": "Associate Engineer L1",
         "work": "Consumed and developed REST API, Saved the response into MySQL database using hibernate and java spring boot. Also involved in deployment of jar and angular build on UAT and prod server. Integrated tickets from service now and internal ticket mgt. system. Created REST API for the project (add, view, view-all, update API etc.). using java spring boot."
       },
       {
+        "img": "static/img/resume/wipro.png",
         "start": "July 2018",
         "end": "August 2019",
         "name": "Wipro Limited",
