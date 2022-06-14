@@ -8,14 +8,15 @@
     "email": "sakshamsangal111@gmail.com",
     "address": "HN-153, Adarsh colony, Muzaffarnagar, Pin:251001, Uttar Pradesh"
   },
-  "summary": "DC-Analyst at Deloitte USI. Java developer with 6 months of experience at Decimal Technology(former) and Wipro (former, 13 months experience). Major interest in competitive programming in java, data structure & algorithm, backend development. Worked on many major and minor projects for competitions, trainings, and for self-learning. Also worked on web-based projects JavaScript and Angular.",
+  "summary": "Analyst at Deloitte USI with 10+ months of experience at Decimal Technology(former) and Wipro (former, 13 months experience). Major interest in competitive programming in java, data structure & algorithm, backend development. Worked on many major and minor projects for competitions, trainings, and for self-learning. Also worked on web-based projects JavaScript and Angular.",
   "skill": {
     "s1": "Data structure and algorithm",
     "s2": "Python, Java, Spring framework, MySQL"
   },
   "award": [
+    "",
     "KPIT innovation award",
-    "Smart India Hackathon, 2018"
+    "Smart India Hackathon, 2018",
   ],
   "edu": {
     "grad": {
@@ -53,9 +54,9 @@
         "end": "Present",
         "location": "Gurugram",
         "name": "Deloitte USI",
-        "duration": "10 months",
-        "role": "DC Analyst",
-        "work": "Serving Deloitte USI as Analyst. Currently I am on bench (trained on Salesforce and Salesforce CPQ)."
+        "duration": "10+ months",
+        "role": "Analyst",
+        "work": "Using lxml python library, created script that extract all xpath of xml. Created a flask application that create JSON which can result into doc file using Jijna2 and DocxTemplate (). Also created a script that split large XML into chunks of XML."
       },
       {
         "img": "static/img/resume/dec.png",
